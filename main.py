@@ -1,74 +1,25 @@
-import bs4 as bs
-import urllib.request
-import requests
-import json
-import re
-import nltk
-import heapq
+from flask import Flask, render_template
+from flask_restful import Resource, Api
 
-#nltk.download('stopwords')
+app = Flask(__name__)
+api = Api(app)
 
-#response = requests.get("https://en.wikipedia.org/wiki/Ip_Man")
+class Quotes(Resource):
+    def put(self):
+        pass
+        
+    def get(self):
+        return {
+            'William Shakespeare': {
+                'quote': ['Love all,trust a few,do wrong to none',
+                'Some are born great, some achieve greatness, and some greatness thrust upon them.']
+        },
+        'Linus': {
+            'quote': ['Talk is cheap. Show me the code.']
+            }
+        }
 
-#json_data = json.loads(response.text)
-#print(json.dumps(json_data, indent=4, sort_keys=True))
+api.add_resource(Quotes, '/')
 
-scraped_data = urllib.request.urlopen('https://en.wikipedia.org/wiki/Ip_Man')
-article = scraped_data.read()
-
-parsed_article = bs.BeautifulSoup(article,'lxml')
-
-paragraphs = parsed_article.find_all('p')
-
-article_text = ""
-
-for p in paragraphs:
-    article_text += p.text
-
-#print(article_text + '\n')
-
-# Removing Square Brackets and extra spaces
-article_text = re.sub(r'\[[0-9]*\]', ' ', article_text)
-article_text = re.sub(r'\s+', ' ', article_text)
-
-#print(article_text + '\n')
-
-# Removing special characters and digits
-formatted_article_text = re.sub('[^a-zA-z]', ' ', article_text )
-formatted_article_text = re.sub(r'\s+', ' ', formatted_article_text)
-
-#print(formatted_article_text)
-
-# A stopword is a common word like the or be which does not aid in summarization
-stopwords = nltk.corpus.stopwords.words('english')
-#print(stopwords)
-
-word_frequencies = {}
-for word in nltk.word_tokenize(formatted_article_text):
-    if word not in stopwords:
-        if word not in word_frequencies.keys():
-            word_frequencies[word] = 1
-        else:
-            word_frequencies[word] += 1
-
-maximun_frequency = max(word_frequencies.values())
-
-for word in word_frequencies.keys():
-    word_frequencies[word] = word_frequencies[word]/maximun_frequency
-
-sentence_list = nltk.sent_tokenize(article_text)
-
-sentence_scores = {}
-for sent in sentence_list:
-    for word in nltk.word_tokenize(sent.lower()):
-        if word in word_frequencies.keys():
-            if len(sent.split(' ')) < 30:
-                if sent not in sentence_scores.keys():
-                    sentence_scores[sent] = word_frequencies[word]
-                else:
-                    sentence_scores[sent] += word_frequencies[word]
-
-summary_sentances = heapq.nlargest(7, sentence_scores, key=sentence_scores.get)
-
-summary = ' '.join(summary_sentances)
-print(summary)
+if __name__ == '__main__':
+    app.run(debug=True)
