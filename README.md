@@ -1,5 +1,3 @@
 # Summarizer
 
-### Summarizes Wikipedia articles based on this [NLTK Tutorial](https://stackabuse.com/text-summarization-with-nltk-in-python/)
-
-- Still a work in progress
+### restful flask API that summarizes blocks of text based on this [NLTK Tutorial](https://stackabuse.com/text-summarization-with-nltk-in-python/)
