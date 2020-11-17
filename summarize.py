@@ -21,10 +21,9 @@ import heapq
 
 #article_text = ""
 
-def summarize(text):
+def Summarize(text):
 
-    for p in paragraphs:
-        article_text += p.text
+    article_text = text
 
     # Removing Square Brackets and extra spaces
     article_text = re.sub(r'\[[0-9]*\]', ' ', article_text)
@@ -65,7 +64,7 @@ def summarize(text):
                     else:
                         sentence_scores[sent] += word_frequencies[word]
 
-    summary_sentances = heapq.nlargest(7, sentence_scores, key=sentence_scores.get)
+    summary_sentances = heapq.nlargest(4, sentence_scores, key=sentence_scores.get)
 
     summary = ' '.join(summary_sentances)
     return summary

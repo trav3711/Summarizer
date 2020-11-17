@@ -1,25 +1,22 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flask_restful import Resource, Api
+import json
+import summarize as s
 
 app = Flask(__name__)
-api = Api(app)
 
-class Quotes(Resource):
-    def put(self):
-        pass
-        
-    def get(self):
-        return {
-            'William Shakespeare': {
-                'quote': ['Love all,trust a few,do wrong to none',
-                'Some are born great, some achieve greatness, and some greatness thrust upon them.']
-        },
-        'Linus': {
-            'quote': ['Talk is cheap. Show me the code.']
-            }
-        }
+@app.route('/')
+def test():
+    return 'hello there'
 
-api.add_resource(Quotes, '/')
+@app.route('/webhook', methods=['POST'])
+def webhook():
+    webhook_message = json.loads(request.data)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+    article_text = webhook_message["text"]
+
+    summary = s.Summarize(article_text)
+
+    return {
+        'summary':summary
+    }
