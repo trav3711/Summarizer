@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def test():
-    return 'hello there'
+    return 'why are you here? I feel violated.'
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
