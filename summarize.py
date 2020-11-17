@@ -5,7 +5,7 @@ import re
 import nltk
 import heapq
 
-#nltk.download('stopwords')
+nltk.download('stopwords')
 
 #response = requests.get("https://en.wikipedia.org/wiki/Ip_Man")
 
