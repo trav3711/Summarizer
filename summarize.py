@@ -6,6 +6,7 @@ import nltk
 import heapq
 
 nltk.download('stopwords')
+nltk.download('punkt')
 
 #response = requests.get("https://en.wikipedia.org/wiki/Ip_Man")
 
