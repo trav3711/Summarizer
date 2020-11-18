@@ -22,7 +22,7 @@ nltk.download('punkt')
 
 #article_text = ""
 
-def Summarize(text):
+def Summarize(text, summary_length):
 
     article_text = text
 
@@ -65,7 +65,7 @@ def Summarize(text):
                     else:
                         sentence_scores[sent] += word_frequencies[word]
 
-    summary_sentances = heapq.nlargest(4, sentence_scores, key=sentence_scores.get)
+    summary_sentances = heapq.nlargest(summary_length, sentence_scores, key=sentence_scores.get)
 
     summary = ' '.join(summary_sentances)
     return summary

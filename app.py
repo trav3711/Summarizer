@@ -15,7 +15,7 @@ def webhook():
 
     article_text = webhook_message["text"]
 
-    summary = s.Summarize(article_text)
+    summary = s.Summarize(article_text, 5)
 
     return {
         'summary':summary
