@@ -9,12 +9,13 @@
 ```
 {
   'text': this could be a big old block of text
+  'summary_length': n
 }
 ```
 
 **Example GET**
 ```
 {
-  'summary': a five sentence summary of your block of text
+  'summary': a summary  of length n of your block of text 
 }
 ```

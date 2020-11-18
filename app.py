@@ -14,8 +14,9 @@ def webhook():
     webhook_message = json.loads(request.data)
 
     article_text = webhook_message["text"]
+    summary_length = webhook_message['summary_length']
 
-    summary = s.Summarize(article_text, 5)
+    summary = s.Summarize(article_text, summary_length)
 
     return {
         'summary':summary
