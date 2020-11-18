@@ -3,7 +3,7 @@
 #### restful flask API that summarizes blocks of text and returns a five sentence summary
 
 **submit your requests to:**
-`https://my-summarizer.herokuapp.com/webhook`
+`https://my-summarizer.herokuapp.com/api`
 
 **Example POST**
 ```
@@ -16,6 +16,6 @@
 **Example GET**
 ```
 {
-  'summary': a summary  of length n of your block of text 
+  'summary': a summary  of length n of your block of text
 }
 ```

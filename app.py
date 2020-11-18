@@ -9,7 +9,7 @@ app = Flask(__name__)
 def test():
     return 'why are you here? I feel violated.'
 
-@app.route('/webhook', methods=['POST'])
+@app.route('/api', methods=['POST'])
 def webhook():
     webhook_message = json.loads(request.data)
 
