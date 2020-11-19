@@ -1,23 +1,19 @@
-from flask import Flask, render_template, request
+from flask import Flask, jsonify, request
 from flask_restful import Resource, Api
-import json
-import summarize as s
+import summarizer as s
 
 app = Flask(__name__)
+api = Api(app)
 
-@app.route('/')
-def test():
-    return 'why are you here? I feel violated.'
+class Summary(Resource):
+    def get(self):
+        text = request.json['text']
+        summary_length = request.json['summary_length']
+        summary_text = s.summarize(text, summary_length)
 
-@app.route('/api', methods=['POST'])
-def webhook():
-    webhook_message = json.loads(request.data)
+        return {'summary': summary_text}
 
-    article_text = webhook_message["text"]
-    summary_length = webhook_message['summary_length']
+api.add_resource(Summary, '/summary')
 
-    summary = s.Summarize(article_text, summary_length)
-
-    return {
-        'summary':summary
-    }
+if __name__ == '__main__':
+    app.run(debug=True)

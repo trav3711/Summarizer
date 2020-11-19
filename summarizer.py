@@ -22,7 +22,7 @@ nltk.download('punkt')
 
 #article_text = ""
 
-def Summarize(text, summary_length):
+def summarize(text, summary_length):
 
     article_text = text
 
