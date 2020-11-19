@@ -5,7 +5,7 @@
 **submit your requests to:**
 `https://my-summarizer.herokuapp.com/summary`
 
-**Example POST**
+**Example GET request**
 ```
 {
   "text": this could be a big old block of text
@@ -13,7 +13,7 @@
 }
 ```
 
-**Example GET**
+**Example payload**
 ```
 {
   "summary": a summary  of length n of your block of text
