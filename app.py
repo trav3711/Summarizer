@@ -1,19 +1,20 @@
-from flask import Flask, jsonify, request
-from flask_restful import Resource, Api
+from flask import Flask, jsonify, Request, request, render_template
+import requests, json
 import summarizer as s
 
 app = Flask(__name__)
-api = Api(app)
 
-class Summary(Resource):
-    def get(self):
-        text = request.json['text']
-        summary_length = request.json['summary_length']
-        summary_text = s.summarize(text, summary_length)
+@app.route("/")
+def main():
+    return render_template('index.html')
 
-        return {'summary': summary_text}
+@app.route('/summary', methods = ['POST'])
+def summary_main():
+    text = request.form['input_text']
+    length = request.form['summary_length']
+    summary_text = s.summarize(text, int(length))
+    return render_template('summary.html', result=summary_text)
 
-api.add_resource(Summary, '/summary')
 
 if __name__ == '__main__':
     app.run(debug=True)
