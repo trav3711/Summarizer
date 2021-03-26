@@ -8,20 +8,6 @@ import heapq
 nltk.download('stopwords')
 nltk.download('punkt')
 
-#response = requests.get("https://en.wikipedia.org/wiki/Ip_Man")
-
-#json_data = json.loads(response.text)
-#print(json.dumps(json_data, indent=4, sort_keys=True))
-
-#scraped_data = urllib.request.urlopen('https://en.wikipedia.org/wiki/Ip_Man')
-#article = scraped_data.read()
-
-#parsed_article = bs.BeautifulSoup(article,'lxml')
-
-#paragraphs = parsed_article.find_all('p')
-
-#article_text = ""
-
 def summarize(text, summary_length):
 
     article_text = text
