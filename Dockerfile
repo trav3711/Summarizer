@@ -1,5 +1,9 @@
 FROM alpine:3.7
 
+RUN apk update && \
+    apk add py-pip && \
+    pip install --upgrade pip
+
 COPY ./requirements.txt /app/requirements.txt
 
 WORKDIR /app
