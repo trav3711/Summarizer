@@ -12,7 +12,4 @@ RUN python3 -m pip install -r requirements.txt
 
 COPY . /app
 
-EXPOSE 5050
-
-
 ENTRYPOINT ["./gunicorn_starter.sh"]
