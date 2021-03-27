@@ -1,18 +1,14 @@
-FROM ubuntu:16.04
-
-RUN apt-get update -y && \
-    apt-get install -y python-pip python-dev && \
-    apt-get install -y python3-dev build-essential
+FROM alpine:3.7
 
 COPY ./requirements.txt /app/requirements.txt
 
 WORKDIR /app
 
-RUN python3 -m pip install -r requirements.txt
-
-EXPOSE 5050
+RUN pip install -r requirements.txt
 
 COPY . /app
+
+EXPOSE 5050
 
 ENTRYPOINT [ "python" ]
 
