@@ -14,6 +14,5 @@ COPY . /app
 
 EXPOSE 5050
 
-ENTRYPOINT [ "python" ]
 
-CMD [ "app.py" ]
+ENTRYPOINT ["./gunicorn_starter.sh"]

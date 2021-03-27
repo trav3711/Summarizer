@@ -4,3 +4,4 @@ regex
 flask
 bs4
 Jinja2
+gunicorn

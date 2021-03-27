@@ -25,6 +25,4 @@ def rest_main():
     }
     return payload
 
-
-if __name__ == '__main__':
-    app.run()
+gunicorn --chdir app main:app -w 2 --threads 2 -b 0.0.0.0:8003
