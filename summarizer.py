@@ -24,7 +24,6 @@ def summarize(text, summary_length):
 
     # A stopword is a common word like the or be which does not aid in summarization
     stopwords = nltk.corpus.stopwords.words('english')
-    #print(stopwords)
 
     word_frequencies = {}
     for word in nltk.word_tokenize(formatted_article_text):
