@@ -1,7 +1,5 @@
 FROM ubuntu:16.04
 
-MAINTANER Your Name "youremail@domain.tld"
-
 RUN apt-get update -y && apt-get install apt-file -y && apt-file update -y && apt-get install -y python3-dev build-essential
 
 COPY ./requirements.txt /app/requirements.txt
