@@ -1,9 +1,9 @@
 # Summarizer
 
-#### restful flask API that summarizes blocks of text and returns a five sentence summary
+#### flask RestAPI that summarizes blocks of text and returns a five sentence summary
 
-**submit your requests to:**
-`https://my-summarizer.herokuapp.com/summary`
+**submit your HTTP requests to:**
+`https://my-summarizer.herokuapp.com/rest`
 
 **Example GET request**
 ```
