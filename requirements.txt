@@ -1,0 +1,6 @@
+nltk
+requests
+regex
+flask
+bs4
+Jinja2
