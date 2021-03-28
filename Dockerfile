@@ -12,4 +12,4 @@ RUN python3 -m pip install -r requirements.txt
 
 COPY . /app
 
-ENTRYPOINT ["./gunicorn_starter.sh"]
+CMD gunicorn -w 4 -bind 0.0.0.0:8003 /app/wsgi --reload

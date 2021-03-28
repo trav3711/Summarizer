@@ -25,4 +25,5 @@ def rest_main():
     }
     return payload
 
-gunicorn --chdir app main:app -w 2 --threads 2 -b 0.0.0.0:8003
+if __name__ == "__main__":
+    app.run(port=8003)
